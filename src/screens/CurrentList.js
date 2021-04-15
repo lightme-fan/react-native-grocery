@@ -1,26 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { SafeAreaView, FlatList, KeyboardAvoidingView } from 'react-native'
+import {v4 as uuid } from 'uuid';
 
-import { View, Text, SafeAreaView, ScrollView } from 'react-native'
-
-import nachos from '../data/nachos'
-
-import ListItem, { Separator } from '../component/ListItem'
+import nachos from '../data/nachos';
+import ListItem, { Separator } from '../component/ListItem';
+import AddItem from '../component/AddItem';
 
 export default () => {
+    const [ list, setList ] = useState(nachos)
     return (
-        <SafeAreaView>
-            <ScrollView>
-                {nachos.map((item, index)=> (
-                    <React.Fragment key={item.id}>
-                        <ListItem 
-                            name={item.name} 
-                            isFavorite={index < 2}
-                            onFavoritePress={() => alert('todo: handle favorite')}
+        <SafeAreaView style={{ flex: 1 }}>
+            <KeyboardAvoidingView style={{ flex: 1 }}>
+                <FlatList
+                    data={list}
+                    renderItem={({item, index}) => (
+                        <ListItem
+                        name={item.name}
+                        onFavoritePress={() => alert('todo: handle favorite')}
+                        isFavorite={index < 2}
                         />
-                        <Separator />
-                    </React.Fragment>
-                ))}
-            </ScrollView>
+                    )}
+                    KeyExtractor={(item) => item.id}
+                    ItemSeparatorComponent={() => <Separator />}
+                    ListHeaderComponent={() => (
+                        <AddItem 
+                            onSubmitEditing={({ nativeEvent: { text } }) => {
+                                setList([{id: uuid(), name: text}, ...list])
+                            }}
+                        />
+                    )}
+                />
+            </KeyboardAvoidingView>
         </SafeAreaView>
     )
-};
+}
