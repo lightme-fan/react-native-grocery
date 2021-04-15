@@ -10,9 +10,13 @@ export default () => {
     return (
         <SafeAreaView>
             <ScrollView>
-                {nachos.map((item)=> (
+                {nachos.map((item, index)=> (
                     <React.Fragment key={item.id}>
-                        <ListItem name={item.name}/>
+                        <ListItem 
+                            name={item.name} 
+                            isFavorite={index < 2}
+                            onFavoritePress={() => alert('todo: handle favorite')}
+                        />
                         <Separator />
                     </React.Fragment>
                 ))}
