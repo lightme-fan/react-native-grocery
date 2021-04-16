@@ -12,6 +12,10 @@ target 'grocery2' do
     :hermes_enabled => false
   )
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
   target 'grocery2Tests' do
     inherit! :complete
     # Pods for testing

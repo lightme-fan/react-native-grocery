@@ -10,9 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "react": "17.0.1",
     "react-native": "0.64.0",
+    "react-native-gesture-handler": "^1.10.3",
     "react-native-get-random-values": "^1.6.0",
+    "react-navigation": "^4.4.4",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

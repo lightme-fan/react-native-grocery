@@ -15,9 +15,11 @@ export default () => {
                     data={list}
                     renderItem={({item, index}) => (
                         <ListItem
-                        name={item.name}
-                        onFavoritePress={() => alert('todo: handle favorite')}
-                        isFavorite={index < 2}
+                            name={item.name}
+                            onFavoritePress={() => alert('todo: handle favorite')}
+                            isFavorite={index < 2}
+                            onAddedSwipe={() => alert('todo: on added swipe')}
+                            onDeleteSwipe={() => alert('todo: on delete swipe')}
                         />
                     )}
                     KeyExtractor={(item) => item.id}
