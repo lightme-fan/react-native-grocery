@@ -48,10 +48,11 @@
     },
     sectionContainer: {
       backgroundColor: '#d3d3d3',
-      paddingVertical: 10
+      paddingVertical: 10,
     },
     sectionText: {
-      fontWeight: 600
+      fontWeight: '600',
+      padding: 20
     }
   })
 
