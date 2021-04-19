@@ -6,8 +6,7 @@ import ListItem, { Separator } from '../component/ListItem';
 import AddItem from '../component/AddItem';
 import { useCurrentList } from '../util/ListManager';
 
-
-export default () => {
+export default ({route,  navigation }) => {
     const { 
         list,
         loading,
@@ -23,6 +22,8 @@ export default () => {
         )
     }
 
+    // const { itemId } = route.params
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <KeyboardAvoidingView style={{ flex: 1 }}>
@@ -35,6 +36,9 @@ export default () => {
                             isFavorite={index < 2}
                             onAddedSwipe={() => removeItem(item.id)}
                             onDeleteSwipe={() => removeItem(item.id)}
+                            onRowPress={() => {
+                                navigation.navigate('ItemDetails', {item})
+                            }}
                         />
                     )}
                     KeyExtractor={(item) => item.id}
