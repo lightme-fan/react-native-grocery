@@ -45,6 +45,13 @@
       color: '#fff',
       fontWeight: '600',
       padding: 20
+    },
+    sectionContainer: {
+      backgroundColor: '#d3d3d3',
+      paddingVertical: 10
+    },
+    sectionText: {
+      fontWeight: 600
     }
   })
 
@@ -76,6 +83,13 @@
     )
   }
 
+  export const SectionHeader = ({ title }) => {
+    return (
+      <View style={styles.container, styles.sectionContainer}>
+        <Text style={styles.sectionText}>{title}</Text>
+      </View>
+    )
+  }
   const ListItem = ({ onRowPress, name, onFavoritePress, isFavorite, onAddedSwipe, onDeleteSwipe }) => {
     let starIcon;
     
