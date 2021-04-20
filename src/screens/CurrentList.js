@@ -14,8 +14,8 @@ export default ({route,  navigation }) => {
         removeItem,
         cart,
         addToCart,
-        favoritedList,
-        addToFavouriteList
+        favoritesList,
+        addToFavouriteList,
     } = useCurrentList()
     
     if (loading) {
@@ -25,7 +25,7 @@ export default ({route,  navigation }) => {
             </SafeAreaView>            
         )
     }
-    // console.log(favoritedList);
+    // console.log(favoritesList);
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <KeyboardAvoidingView style={{ flex: 1 }}>
@@ -38,8 +38,8 @@ export default ({route,  navigation }) => {
                     renderItem={({item, index}) => (
                         <ListItem
                             name={item.name}
-                            onFavoritePress={() => handleFavorite(item.id)}
-                            isFavorite={item.id}
+                            onFavoritePress={() => addToFavouriteList(item)}
+                            isFavorite={item.isFavorite}
                             onAddedSwipe={() => addToCart(item)}
                             onDeleteSwipe={() => removeItem(item.id)}
                             onRowPress={() => {
