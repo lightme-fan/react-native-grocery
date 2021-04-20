@@ -14,6 +14,7 @@ export const useCurrentList = () => {
     const [ list, setList ] = useState([])
     const [ loading, setLoading ] = useState(true)
     const [ cart, setCart ] = useState([])
+    const [ favoritedList, setFavoritedList ] = useState([])
     
     const addItem = (text) => {
         const newList = [{id: uuid(), name: text}, ...list] 
@@ -31,7 +32,17 @@ export const useCurrentList = () => {
         removeItem(item.id)
         const newCart = [item, ...cart] 
         setCart(newCart)
-        updateStoragedCurrentCart(newCart)
+        // updateStoragedCurrentCart(newCart)
+    }
+
+    const handleFavorite = (id) => {
+        const newList = list.filter(item => item.id === id)
+        setList(newList)
+    }
+
+    const addToFavouriteList = (item) => {
+        const newList = [item, ...favoritedList]
+        setFavoritedList(newList)
     }
 
     useEffect(() => {
@@ -60,6 +71,9 @@ export const useCurrentList = () => {
         addItem,
         removeItem,
         cart,
-        addToCart
+        addToCart,
+        favoritedList,
+        addToFavouriteList,
+        handleFavorite
     }
 }
